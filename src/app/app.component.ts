@@ -1,5 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { ApiService } from './services/api.service';
+import { UserdataService } from './services/user/userdata.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,16 @@ import { ApiService } from './services/api.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(private apiService: ApiService) {}
+  user: any = {};
+  constructor(
+    private apiService: ApiService,
+    private userData: UserdataService
+  ) {}
 
   ngOnInit() {
-    this.apiService.getUser('johnpapa').subscribe(console.log);
+    this.userData.userData$.subscribe((data) => {
+      this.user = data;
+      console.log(this.user); // Access and use the data here
+    });
   }
 }
