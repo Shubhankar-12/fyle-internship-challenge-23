@@ -14,6 +14,7 @@ export class SearchbarComponent {
   ) {}
   username: string = '';
   user: any = {};
+
   onSubmit(): void {
     this.apiService.getUser(this.username).subscribe({
       next: (data) => {
@@ -23,8 +24,14 @@ export class SearchbarComponent {
         this.dataSevice.setData(this.user);
       },
     });
-    // console.log(this.dataSevice.getData());
-    // console.log(this.dataSevice.getData());
+    this.apiService
+      .getRepos(this.username)
+      .then(() => {})
+      .finally(() => {
+        this.apiService.repositories$.subscribe((repos) => {
+          this.dataSevice.setUserRepos(repos);
+        });
+      });
   }
   clearSearch(): void {
     this.username = '';

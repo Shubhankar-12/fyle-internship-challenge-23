@@ -17,7 +17,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.userData.userData$.subscribe((data) => {
       this.user = data;
-      console.log(this.user); // Access and use the data here
     });
   }
 }
