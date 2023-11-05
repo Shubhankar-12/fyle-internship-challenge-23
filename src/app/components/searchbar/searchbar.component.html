@@ -1,0 +1,39 @@
+<div class="max-w-md mx-auto">
+  <form (ngSubmit)="onSubmit()">
+    <div
+      class="relative flex items-center w-full h-12 rounded-lg focus-within:shadow-lg bg-white overflow-hidden"
+    >
+      <div class="grid place-items-center h-full w-12 text-gray-300">
+        <img
+          src="../../../assets/icons/search.svg"
+          alt="search"
+          class="h-6 w-6"
+        />
+      </div>
+
+      <input
+        class="peer h-full w-full outline-none text-sm text-gray-700 pr-2"
+        type="text"
+        id="search"
+        placeholder="Enter the Username..."
+        [(ngModel)]="username"
+        name="Username"
+      />
+      <div class="grid place-items-center h-full w-12 text-gray-300">
+        <img
+          src="../../../assets/icons/cross-23.svg"
+          alt="search"
+          class="h-6 w-6 grayscale cursor-pointer hover:text-red-600"
+          (click)="clearSearch()"
+          *ngIf="username"
+        />
+      </div>
+      <button
+        class="bg-indigo-500 text-white text-base rounded-lg px-4 py-2 mr-2 font-thin hover:bg-indigo-600 transition duration-300"
+        type="submit"
+      >
+        Search
+      </button>
+    </div>
+  </form>
+</div>
