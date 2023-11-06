@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -7,15 +7,15 @@ import { BehaviorSubject } from 'rxjs';
 export class UserdataService {
   private userDataSubject = new BehaviorSubject<any>(null);
   userData$ = this.userDataSubject.asObservable();
-  private userRepos: any = [];
+  private userReposSubject = new BehaviorSubject<any[]>([]); // Use BehaviorSubject for userRepos
+  userRepos$ = this.userReposSubject.asObservable();
   setData(data: any) {
     this.userDataSubject.next(data);
   }
-  setUserRepos(data: any) {
-    this.userRepos = data;
-    console.log(this.userRepos);
+  setUserRepos(data: any[]) {
+    this.userReposSubject.next(data); // Update the BehaviorSubject with new data
   }
-  getUserRepos() {
-    return this.userRepos;
+  getUserRepos(): Observable<any[]> {
+    return this.userReposSubject.asObservable(); // Return an observable for userRepos
   }
 }
