@@ -1,6 +1,6 @@
 [build]
   publish = "dist/fyle-internship-challenge-23"
-  command = "ng build --prod"
+  command = "ng build"
 [[redirects]]
   from = "/*"
   to = "/index.html"
