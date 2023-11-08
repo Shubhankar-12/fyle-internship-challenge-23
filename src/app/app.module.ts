@@ -10,7 +10,7 @@ import { UserComponent } from './components/user/user.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserreposComponent } from './components/userrepos/userrepos.component';
 import { RepoInfoComponent } from './components/repo-info/repo-info.component';
-
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
