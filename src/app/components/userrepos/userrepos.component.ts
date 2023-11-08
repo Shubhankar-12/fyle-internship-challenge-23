@@ -10,6 +10,7 @@ import { UserdataService } from 'src/app/services/user/userdata.service';
 export class UserreposComponent implements OnInit {
   username: string = '';
   userRepos: any = [];
+  totalRepos: Number = 0;
   constructor(
     private apiService: ApiService,
     private dataService: UserdataService
